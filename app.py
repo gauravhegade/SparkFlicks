@@ -22,7 +22,6 @@ def home():
         recommender_output = recommender.make_recommendation(
             input_str=input_movie, n_recommendation=number_of_recommendations)
 
-        # print(recommender_output)
 
         return render_template("home.html", recommender_output=recommender_output, n_rec=number_of_recommendations, input_movie=input_movie, enumerate=enumerate, key = custom_search_api, cx = custom_search_code)
 

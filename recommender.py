@@ -69,7 +69,7 @@ def fuzzy_movie_name_matching(input_str, mapper, print_matches):
     match_movie = sorted(match_movie, key=lambda x: x[2])[::-1]
 
     if len(match_movie) == 0:
-        print("Oops..! no such movie is present here\n")
+        print("No such movie exists in database.\n")
         return -1
     if print_matches == True:
         print(f"Some matches of {input_str} are: \n")
@@ -89,7 +89,6 @@ recommendation_model = NearestNeighbors(
 
 
 def make_recommendation(input_str, n_recommendation):
-    # print("System is working....\n")
     data = item_user_mat_sparse
     model = recommendation_model
     mapper = movie_to_index
@@ -109,11 +108,7 @@ def make_recommendation(input_str, n_recommendation):
     # now we ind of all recommendation
     # build mapper index->title
     index_to_movie = {ind: movie for movie, ind in mapper.items()}
-    # print(index_to_movie)
 
-    # print("Viewer who watches this movie ",
-        #   input_str, "also watches following movies.")
-    # print(index_list[0][2])
     for i in range(1, index_list.shape[1]):
         res.append(index_to_movie[index_list[0][i]])
 
