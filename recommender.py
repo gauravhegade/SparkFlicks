@@ -5,6 +5,7 @@ import pandas as pd
 from sklearn.neighbors import NearestNeighbors
 
 import warnings
+
 warnings.filterwarnings("ignore")
 
 ratings = pd.read_csv("input/ratings.csv")
@@ -22,8 +23,7 @@ movie_freq = pd.DataFrame(ratings.groupby("movieId").size(), columns=["count"])
 
 threshold_rating_freq = 10
 
-popular_movies_id = list(
-    set(movie_freq.query("count>=@threshold_rating_freq").index))
+popular_movies_id = list(set(movie_freq.query("count>=@threshold_rating_freq").index))
 
 ratings_with_popular_movies = ratings[ratings.movieId.isin(popular_movies_id)]
 
